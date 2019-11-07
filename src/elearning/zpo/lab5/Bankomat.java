@@ -1,12 +1,7 @@
 package elearning.zpo.lab5;
 
 public class Bankomat {
-	private BankingOperation bankingOperation;
-
-	public void setBankingOperation(BankingOperation bankingOperation) {
-		this.bankingOperation = bankingOperation;
-	}
-	public void execute() throws BankingException {
+	public void execute(BankingOperation bankingOperation) throws BankingException {
 		bankingOperation.execute();
 	}
 }
