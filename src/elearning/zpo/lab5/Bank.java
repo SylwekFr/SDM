@@ -85,5 +85,15 @@ public class Bank {
         Account123.deposit(1000);
         Account123.withwdraw(200);
         Account123.transferTo(Account23, 100);
+        
+        System.out.println(Account123.balance());
+        Bankomat bankomat = new Bankomat();
+        BankingOperation deposit = new DepositOperation(Account123, 1000);
+        bankomat.setBankingOperation(deposit);
+        bankomat.execute();
+        System.out.println(Account123.balance());
+        
+        
+        
     }
 }
