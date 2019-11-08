@@ -22,7 +22,7 @@ public class Account {
     public void deposit(double ammount) 
     throws BankingException {
         if (ammount < 0)
-            throw new BankingException("ammount wp³aty musi byæ nieujemna");
+            throw new BankingException("ammount should be positive");
         
         this.balance += ammount;
     }
@@ -35,9 +35,9 @@ public class Account {
     public void withwdraw(double amount) 
     throws BankingException {
         if (this.balance < amount)
-            throw new BankingException("Próba wyp³aty ponad balance na rachunku");
+            throw new BankingException("you have a too low balance on your account");
         if (amount < 0)
-            throw new BankingException("ammount wyp³aty musi byæ nieujemna");
+            throw new BankingException("ammount should be positive");
 
         this.balance -= amount;
     }
