@@ -82,8 +82,24 @@ public class Bank {
         Account Account123 = bank.Account("123");
         Account Account23 = bank.Account("23");
         
-        Account123.deposit(1000);
+/*      Account123.deposit(1000);
         Account123.withwdraw(200);
-        Account123.transferTo(Account23, 100);
+        Account123.transferTo(Account23, 100);*/
+        
+        System.out.println("Account123:" + Account123.balance());
+        System.out.println("Account23:" + Account23.balance());
+        Bankomat bankomat = new Bankomat();
+        BankingOperation deposit = new DepositOperation(Account123, 1000);
+        bankomat.execute(deposit);
+        System.out.println("Account123:" + Account123.balance());
+        BankingOperation withwdraw = new WithwdrawOperation(Account123, 200);
+        bankomat.execute(withwdraw);
+        System.out.println("Account123:" + Account123.balance());
+        BankingOperation transferTo = new TransferToOperation(Account123, Account23, 100);
+        bankomat.execute(transferTo);
+        System.out.println("Account123:" + Account123.balance());
+        System.out.println("Account23:" + Account23.balance());
+        
+        
     }
 }
