@@ -81,7 +81,10 @@ public class Bank {
         
         Account Account123 = bank.Account("123");
         Account Account23 = bank.Account("23");
-        
+        TaxEmployee taxEmployee = new TaxEmployee();
+
+        Account123.addObserver(taxEmployee);
+
 /*      Account123.deposit(1000);
         Account123.withwdraw(200);
         Account123.transferTo(Account23, 100);*/
