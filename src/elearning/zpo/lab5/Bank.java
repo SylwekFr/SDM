@@ -102,7 +102,13 @@ public class Bank {
         bankomat.execute(transferTo);
         System.out.println("Account123:" + Account123.balance());
         System.out.println("Account23:" + Account23.balance());
-        
+        RateA rateA = new RateA();
+        BankingOperation setRateOperation = new SetRateOperation(Account123, rateA);
+        bankomat.execute(setRateOperation);
+        RateB rateB = new RateB();
+        bankomat.execute(new SetRateOperation(Account123, rateB));
+
+
         
     }
 }

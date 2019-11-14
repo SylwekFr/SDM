@@ -9,6 +9,7 @@ public class DepositOperation implements BankingOperation{
 		this.account = account;
 		this.ammount = ammount;
 	}
+
 	@Override
 	public void execute() throws BankingException {
 		account.deposit(ammount);

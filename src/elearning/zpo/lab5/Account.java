@@ -8,7 +8,19 @@ public class Account extends Observable {
     private String id = null;
     private String name = null;
     private String surname = null;
-    private double balance = 0; 
+    private double balance = 0;
+    private InterestRate interestRate;
+
+    public InterestRate getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(InterestRate interestRate) {
+        this.interestRate = interestRate;
+    }
+
+
+
     
     public Account(String id, String name, String surname) {
         this.id = id;
@@ -86,6 +98,10 @@ public class Account extends Observable {
         balance += ammount;
         setChanged();
         notifyObservers(this.name);
+    }
+
+    public void printInterestState(){
+        interestRate.printInterestState(this);
     }
 
     /**
