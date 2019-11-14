@@ -1,7 +1,9 @@
 
 package elearning.zpo.lab5;
 
-public class Account {
+import java.util.Observable;
+
+public class Account extends Observable {
 
     private String id = null;
     private String name = null;
@@ -25,8 +27,10 @@ public class Account {
             throw new BankingException("ammount should be positive");
         
         this.balance += ammount;
+        setChanged();
+        notifyObservers(this.name);
     }
-    
+
     /**
      * Withwdraw from account
      * @param amount
@@ -40,6 +44,8 @@ public class Account {
             throw new BankingException("ammount should be positive");
 
         this.balance -= amount;
+        setChanged();
+        notifyObservers(this.name);
     }
         
     /**
@@ -67,6 +73,8 @@ public class Account {
         
         balance -= ammount;
         Account.transferFrom(this, ammount);
+        setChanged();
+        notifyObservers(this.name);
     }
     
     /**
@@ -76,6 +84,8 @@ public class Account {
      */
     private void transferFrom(Account account, double ammount) {
         balance += ammount;
+        setChanged();
+        notifyObservers(this.name);
     }
 
     /**
