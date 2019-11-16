@@ -1,16 +1,20 @@
 package elearning.zpo.lab5;
 
-public class RateA implements InterestRate {
-    private int persents = 2;
+public class RateA implements Rate {
+    private Account account;
+    double interest = 2;
 
-    @Override
-    public void setRate(Account account, InterestRate interestRate) {
-        account.setInterestRate(interestRate);
+    public RateA() {
     }
 
     @Override
-    public void printInterestState(Account account) {
+    public void calculate(Account account) {
+        System.out.println("Calculating RateA");
+        account.setRate(this);
+    }
 
-        System.out.println("Interest for RateA:" + persents / account.balance() * 100);
+    @Override
+    public String toString() {
+        return "A rate";
     }
 }

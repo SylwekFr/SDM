@@ -1,20 +1,19 @@
 package elearning.zpo.lab5;
 
-public class RateB implements Rate {
+public class RateC implements Rate {
     private Account account;
-    double interest = 3;
 
-    public RateB() {
+    public RateC() {
     }
 
     @Override
     public void calculate(Account account) {
-        System.out.println("Calculating RateB");
+        System.out.println("Calculating RateC");
         account.setRate(this);
     }
 
     @Override
     public String toString() {
-        return "B rate";
+        return "C rate";
     }
 }

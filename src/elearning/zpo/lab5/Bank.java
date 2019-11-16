@@ -8,77 +8,82 @@ import java.util.Map;
 public class Bank {
 
     private Map accounts = null;
-    
+
     public Bank() {
         accounts = new HashMap();
     }
-    
+
     /**
      * Creating an account
+     *
      * @param id
      * @param owner's name
      * @param owner's surname
      * @throws BankingException
      */
-    public void createAccount(String id, String name, String surname) 
-    throws BankingException {
+    public void createAccount(String id, String name, String surname)
+            throws BankingException {
         if (Account(id) != null)
             throw new BankingException("This Account ID already exists!");
         Account account = new Account(id, name, surname);
         accounts.put(id, account);
     }
-    
-    
+
+
     /**
      * Searches for Account with a given id number
+     *
      * @param id
      * @return
      */
     private Account Account(String id) {
         return (Account) accounts.get(id);
     }
-    
+
     /**
      * Returns an iterator for account list
+     *
      * @return
      */
     private Iterator listAccounts() {
         return accounts.values().iterator();
     }
-        
+
     /**
      * Transfer z rachunku na Account
+     *
      * @param accountFrom
      * @param accountTo
      * @param ammount
      * @throws BankingException
      */
     public void Transfer(Account accountFrom, Account accountTo, double ammount)
-    throws BankingException {
+            throws BankingException {
         accountFrom.transferTo(accountTo, ammount);
     }
 
     /**
      * Transfer from one account to another
+     *
      * @param idFrom
      * @param idTo
      * @param ammount
      * @throws BankingException
      */
     public void Transfer(String idFrom, String idTo, double ammount)
-    throws BankingException {
+            throws BankingException {
         Account accountFrom = Account(idFrom);
         Account accountTo = Account(idTo);
-        
+
         accountFrom.transferTo(accountTo, ammount);
     }
 
-    public static void main(String[] args) 
-    throws BankingException {
+    public static void main(String[] args)
+            throws BankingException {
         Bank bank = new Bank();
         bank.createAccount("123", "Jan", "Kowalski");
         bank.createAccount("23", "Anna", "Nowak");
-        
+
         Account Account123 = bank.Account("123");
         Account Account23 = bank.Account("23");
         TaxEmployee taxEmployee = new TaxEmployee();
@@ -88,7 +93,7 @@ public class Bank {
 /*      Account123.deposit(1000);
         Account123.withwdraw(200);
         Account123.transferTo(Account23, 100);*/
-        
+
         System.out.println("Account123:" + Account123.balance());
         System.out.println("Account23:" + Account23.balance());
         Bankomat bankomat = new Bankomat();
@@ -102,13 +107,13 @@ public class Bank {
         bankomat.execute(transferTo);
         System.out.println("Account123:" + Account123.balance());
         System.out.println("Account23:" + Account23.balance());
-        RateA rateA = new RateA();
-        BankingOperation setRateOperation = new SetRateOperation(Account123, rateA);
-        bankomat.execute(setRateOperation);
-        RateB rateB = new RateB();
-        bankomat.execute(new SetRateOperation(Account123, rateB));
+
+        bankomat.execute(new CalculateRateOperation(Account123, new RateC()));
+        System.out.println(Account123.getRate().toString());
+
+        //RateB rateB = new RateB();
+        //bankomat.execute(new SetRateOperation(Account123, rateB));
 
 
-        
     }
 }
