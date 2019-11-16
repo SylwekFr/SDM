@@ -5,12 +5,12 @@ import java.util.Observable;
 
 public class Account extends Observable {
 
-    private String id = null;
-    private String name = null;
-    private String surname = null;
-    private double balance = 0; 
+    protected String id = null;
+    protected String name = null;
+    protected String surname = null;
+    protected double balance = 0; 
     
-    public Account(String id, String name, String surname) {
+    protected Account(String id, String name, String surname) {
         this.id = id;
         this.name = name;
         this.surname = surname;
