@@ -103,17 +103,13 @@ public class Bank {
         BankingOperation withwdraw = new WithwdrawOperation(Account123, 200);
         bankomat.execute(withwdraw);
         System.out.println("Account123:" + Account123.balance());
-        BankingOperation transferTo = new TransferToOperation(Account123, Account23, 100);
+        BankingOperation transferTo = new TransferToOperation(Account123, Account23, 300);
         bankomat.execute(transferTo);
         System.out.println("Account123:" + Account123.balance());
         System.out.println("Account23:" + Account23.balance());
 
-        bankomat.execute(new CalculateRateOperation(Account123, new RateC()));
+        bankomat.execute(new CalculateInterestOperation(Account123));
         System.out.println(Account123.getRate().toString());
-
-        //RateB rateB = new RateB();
-        //bankomat.execute(new SetRateOperation(Account123, rateB));
-
 
     }
 }

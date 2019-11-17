@@ -9,14 +9,18 @@ public class Account extends Observable {
     private String name = null;
     private String surname = null;
     private double balance = 0;
-    Rate rate;
+    private Rate rate;
 
-    public Rate getRate() {
+    Rate getRate() {
         return rate;
     }
 
-    public void setRate(Rate rate) {
+    void setRate(Rate rate) {
         this.rate = rate;
+    }
+
+    void calculateInterest() {
+        rate.calculateInterest(this);
     }
 
     public Account(String id, String name, String surname) {
