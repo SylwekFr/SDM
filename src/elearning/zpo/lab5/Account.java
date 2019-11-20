@@ -10,15 +10,15 @@ class Account extends Observable {
     private final String surname;
     private double balance = 0;
 
-    public Interest getInterest() {
-        return interest;
-    }
-
     public void setInterest(Interest interest) {
         this.interest = interest;
     }
 
     private Interest interest;
+
+    public double calculateInterest() {
+        return interest.calculateInterest(this);
+    }
 
     public Account(String id, String name, String surname) {
         this.id = id;

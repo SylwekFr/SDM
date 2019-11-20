@@ -109,8 +109,8 @@ class Bank {
         System.out.println("Account23:" + Account23.balance());
 
         bankomat.execute(new ChangeInterestOperation(Account123, new InterestA()));
-        System.out.println(Account123.getInterest().calculateInterest(Account123));
+        System.out.println(Account123.calculateInterest());
         bankomat.execute(new ChangeInterestOperation(Account123, new InterestB()));
-        System.out.println(Account123.getInterest().calculateInterest(Account123));
+        System.out.println(Account123.calculateInterest());
     }
 }
