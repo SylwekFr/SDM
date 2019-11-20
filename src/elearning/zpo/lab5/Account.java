@@ -3,25 +3,22 @@ package elearning.zpo.lab5;
 
 import java.util.Observable;
 
-public class Account extends Observable {
+class Account extends Observable {
 
-    private String id = null;
-    private String name = null;
-    private String surname = null;
+    private final String id;
+    private final String name;
+    private final String surname;
     private double balance = 0;
-    private Rate rate;
 
-    Rate getRate() {
-        return rate;
+    public Interest getInterest() {
+        return interest;
     }
 
-    void setRate(Rate rate) {
-        this.rate = rate;
+    public void setInterest(Interest interest) {
+        this.interest = interest;
     }
 
-    void calculateInterest() {
-        rate.calculateInterest(this);
-    }
+    private Interest interest;
 
     public Account(String id, String name, String surname) {
         this.id = id;
@@ -72,7 +69,7 @@ public class Account extends Observable {
         return this.balance;
     }
 
-    public String owner() {
+    private String owner() {
         return this.name + " " + this.surname;
     }
 

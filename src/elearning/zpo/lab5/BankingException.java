@@ -3,7 +3,7 @@
 package elearning.zpo.lab5;
 
 
-public class BankingException extends Exception {
+class BankingException extends Exception {
     private static final long serialVersionUID = 1L;
 
     public BankingException() {

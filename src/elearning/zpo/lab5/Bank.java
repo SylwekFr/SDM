@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.util.Map;
 
 
-public class Bank {
+class Bank {
 
-    private Map accounts = null;
+    private Map accounts;
 
-    public Bank() {
+    private Bank() {
         accounts = new HashMap();
     }
 
@@ -21,7 +21,7 @@ public class Bank {
      * @param owner's surname
      * @throws BankingException
      */
-    public void createAccount(String id, String name, String surname)
+    private void createAccount(String id, String name, String surname)
             throws BankingException {
         if (Account(id) != null)
             throw new BankingException("This Account ID already exists!");
@@ -108,8 +108,9 @@ public class Bank {
         System.out.println("Account123:" + Account123.balance());
         System.out.println("Account23:" + Account23.balance());
 
-        bankomat.execute(new CalculateInterestOperation(Account123));
-        System.out.println(Account123.getRate().toString());
-
+        bankomat.execute(new ChangeInterestOperation(Account123, new InterestA()));
+        System.out.println(Account123.getInterest().calculateInterest(Account123));
+        bankomat.execute(new ChangeInterestOperation(Account123, new InterestB()));
+        System.out.println(Account123.getInterest().calculateInterest(Account123));
     }
 }
