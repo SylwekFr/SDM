@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Compilation
+      run: javac -Xlint:unchecked src/elearning/zpo/lab5/*.java
+    - name: Run
+      run: cd src && java elearning/zpo/lab5/Bank
