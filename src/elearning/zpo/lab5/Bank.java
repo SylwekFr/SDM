@@ -7,8 +7,9 @@ import java.util.Map;
 
 class Bank {
 
-    private Map accounts;
 
+    private Map accounts= null;
+    private AccountFactory accountFactory = new AccountFactory();
     private Bank() {
         accounts = new HashMap();
     }
@@ -21,11 +22,20 @@ class Bank {
      * @param owner's surname
      * @throws BankingException
      */
-    private void createAccount(String id, String name, String surname)
-            throws BankingException {
+    public void createAccount(String id, String name, String surname, String type) 
+    throws BankingException {
         if (Account(id) != null)
             throw new BankingException("This Account ID already exists!");
-        Account account = new Account(id, name, surname);
+        // Account account = new Account(id, name, surname);
+        Account account;
+
+        if(type == "Savings")
+            account = accountFactory.createSavingsAccount(id, name, surname);
+        else if (type == "Checking")
+            account = accountFactory.createCheckingAccount(id, name, surname);
+        else
+            account = new Account(id, name, surname);
+
         accounts.put(id, account);
     }
 
@@ -81,9 +91,9 @@ class Bank {
     public static void main(String[] args)
             throws BankingException {
         Bank bank = new Bank();
-        bank.createAccount("123", "Jan", "Kowalski");
-        bank.createAccount("23", "Anna", "Nowak");
-
+        bank.createAccount("123", "Jan", "Kowalski", "Savings");
+        bank.createAccount("23", "Anna", "Nowak", "Checking");
+        
         Account Account123 = bank.Account("123");
         Account Account23 = bank.Account("23");
         TaxEmployee taxEmployee = new TaxEmployee();

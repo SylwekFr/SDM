@@ -20,6 +20,7 @@ class Account extends Observable {
         return interest.calculateInterest(this);
     }
 
+
     public Account(String id, String name, String surname) {
         this.id = id;
         this.name = name;
