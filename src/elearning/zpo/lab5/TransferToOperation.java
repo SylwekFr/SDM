@@ -1,9 +1,9 @@
 package elearning.zpo.lab5;
 
 public class TransferToOperation implements BankingOperation {
-	private Account accountFrom;
-	private Account accountTo;
-	private double ammount;
+	private final Account accountFrom;
+	private final Account accountTo;
+	private final double ammount;
 	
 	public TransferToOperation(Account accountFrom, Account accountTo, double ammount) {
 		super();
