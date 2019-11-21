@@ -1,8 +1,8 @@
 package elearning.zpo.lab5;
 
 public class WithwdrawOperation implements BankingOperation {
-	private Account account;
-	private double ammount;
+	private final Account account;
+	private final double ammount;
 	
 	public WithwdrawOperation(Account account, double ammount) {
 		super();
